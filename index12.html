@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Regex Matching and Email Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="submit"] {
+            width: 40%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            margin: 0 auto;
+            display: block;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        p {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+  <h1>Regex Matching</h1>
+  <form method="POST">
+      <center><label for="test_string">Test String:</label></center><br>
+      <input type="text" id="test_string" name="test_string"><br><br>
+      <center><label for="regex_pattern">Regex Pattern:</label></center><br>
+      <input type="text" id="regex_pattern" name="regex_pattern"><br><br>
+      <input type="submit" value="Match">
+  </form>
+  {% if matches %}
+  <center><h2>Matches:</h2></center>
+  <ul>
+      {% for match in matches %}
+      <center><li>{{ match }}</li></center>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  
+  
+
+    <h1>Email Validation</h1>
+    <form method="POST">
+        <input type="hidden" name="validation_type" value="email">
+        <center><label for="email">Email:</label></center><br>
+        <center><input type="email" id="email" name="email"><br></center>
+        <input type="submit" value="Validate Email">
+    </form>
+    {% if email %}
+    <center><p>{{ email }}</p></center>
+    {% if is_valid %}
+    <center><p>Valid Email Address</p></center>
+    {% else %}
+    <center><p>Invalid Email Address</p></center>
+    {% endif %}
+    {% endif %}
+</body>
+</html>
